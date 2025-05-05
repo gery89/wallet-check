@@ -2,6 +2,7 @@ import re
 import binascii
 import hashlib
 import os
+import subprocess
 from bsddb3 import db  # Make sure bsddb3 is installed: pip install bsddb3
 
 # Base58 alphabet
@@ -46,6 +47,33 @@ def is_valid_berkeley_wallet(path):
     except Exception:
         return False
 
+# Function to extract Bitcoin hash using bitcoin2john.py
+def extract_bitcoin_hash(wallet_path, bitcoin2john_path):
+    try:
+        # Execute bitcoin2john.py using subprocess
+        result = subprocess.run(
+            ['python3', bitcoin2john_path, wallet_path],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        
+        if result.returncode != 0:
+            print(f"❌ Error running bitcoin2john: {result.stderr}")
+            return None
+        
+        # Extract the hash from the output
+        hash_line = result.stdout.strip()
+        if hash_line:
+            print(f"✅ Bitcoin Hash: {hash_line}")
+            return hash_line
+        else:
+            print("❌ No hash found.")
+            return None
+    except Exception as e:
+        print(f"❌ Error extracting Bitcoin hash: {e}")
+        return None
+
 # Load addresses and balances
 address_file = 'utxo.csv'
 address_balances = {}
@@ -65,17 +93,20 @@ for filename in dat_files:
     verified = True
 
     try:
+        # Check file size (must be greater than 1024 bytes)
         size = os.path.getsize(path)
         if size < 1024:
             print(f"⚠️  File size too small ({size} bytes).")
             verified = False
 
+        # Check if it is a valid Berkeley DB wallet
         if is_valid_berkeley_wallet(path):
             print("✅ File is a valid Berkeley DB wallet.")
         else:
             print("❌ File is NOT a valid Berkeley DB wallet (possibly corrupted).")
             verified = False
 
+        # Check if the file is readable as UTF-8 text
         with open(path, 'rb') as f:
             binary_data = f.read()
 
@@ -88,10 +119,14 @@ for filename in dat_files:
             print("❌ Failed to decode file content.")
             verified = False
 
-        if verified:
-            print("✅ File passed all checks.")
+        # If any verification fails, don't attempt to extract the Bitcoin hash
+        if not verified:
+            print("❌ File failed verification. Skipping Bitcoin hash extraction.")
         else:
-            print("❌ File failed verification.")
+            print("✅ File passed all checks.")
+            # Extract Bitcoin hash only if the file passes all verifications
+            bitcoin2john_path = 'john/run/bitcoin2john.py'  # Update this with the correct path if necessary
+            bitcoin_hash = extract_bitcoin_hash(path, bitcoin2john_path)
 
         # Search for valid addresses
         potential_addresses = re.findall(r'1[a-km-zA-HJ-NP-Z1-9]{25,34}', text)
