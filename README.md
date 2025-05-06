@@ -14,10 +14,15 @@ This software is a **.dat wallet checker**.
 2. Provide a CSV file containing address and balance information.
 3. Run the script to check which addresses from the `.dat` file have a balance.
 
-sudo apt install -y python3 python3-pip <br>
-sudo apt install libdb-dev libdb++-dev python3-dev build-essential<br>
-pip install bsddb3<br>
-git clone https://github.com/openwall/john.git <br>
-Download Database (https://privatekey2bitcoin.com/freewallets/utxo.csv)
+## Requirements
+
+To set up the environment and install the necessary dependencies, follow these steps:
+
+```bash
+sudo apt install -y python3 python3-pip
+sudo apt install libdb-dev libdb++-dev python3-dev build-essential
+pip install bsddb3
+git clone https://github.com/openwall/john.git
+Download address balance Database (https://privatekey2bitcoin.com/freewallets/utxo.csv)
 
 
