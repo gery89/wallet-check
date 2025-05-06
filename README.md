@@ -18,11 +18,11 @@ This software is a **.dat wallet checker**.
 
 To set up the environment and install the necessary dependencies, follow these steps:
 
-```bash
-sudo apt install -y python3 python3-pip
-sudo apt install libdb-dev libdb++-dev python3-dev build-essential
-pip install bsddb3
-git clone https://github.com/openwall/john.git
-Download address balance Database (https://privatekey2bitcoin.com/freewallets/utxo.csv)
 
+1. sudo apt install -y python3 python3-pip
+2. sudo apt install libdb-dev libdb++-dev python3-dev build-essential
+3. pip install bsddb3
+4. git clone https://github.com/openwall/john.git
+5. Download address balance Database (https://privatekey2bitcoin.com/freewallets/utxo.csv)
+6. Start
 
