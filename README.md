@@ -4,9 +4,10 @@ This software is a **.dat wallet checker**.
 
 ## Features
 
-- Verifies that the `.dat` file is readable and not corrupted.
+- Verifies all `.dat` files in the same folder and request is readable and not corrupted.
 - Extracts all addresses contained in the file.
 - Compares the extracted addresses against a CSV file to check for balances.
+- Extract hashcat hash.
 
 ## Usage
 
