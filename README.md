@@ -1,4 +1,4 @@
-# .dat Wallet Checker
+# Dat Wallet Checker
 
 This software is a **.dat wallet checker**.
 
